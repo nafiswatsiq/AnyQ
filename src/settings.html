@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyQ Settings</title>
+    <script src="/settings.js" defer></script>
+  </head>
+  <body class="settings-page">
+    <main class="settings">
+      <h1>AnyQ Settings</h1>
+      <p class="settings-note">API key disimpan di Windows Credential Manager, bukan di file konfigurasi.</p>
+      <form id="settings-form">
+        <label>Base URL <input id="base-url" type="url" required /></label>
+        <label>API Key <input id="api-key" type="password" autocomplete="off" placeholder="Tidak diubah jika kosong" /></label>
+        <label>Chat model <input id="chat-model" required /></label>
+        <label>System prompt <textarea id="system-prompt" rows="4"></textarea></label>
+        <label>Microphone <select id="mic-device"><option value="">Default microphone</option></select></label>
+        <label>Audio source
+          <select id="audio-source">
+            <option value="microphone">Microphone</option>
+            <option value="system_audio">System audio (speaker/headset loopback)</option>
+          </select>
+        </label>
+        <label class="range-label">Opacity <span id="opacity-value">90%</span><input id="opacity" type="range" min="10" max="100" /></label>
+        <label>Overlay capture mode
+          <select id="capture-mode">
+            <option value="allow">Allow screen capture and recording</option>
+            <option value="protect">Hide overlay from screen capture and recording</option>
+          </select>
+        </label>
+        <label class="checkbox-label"><input id="auto-hide" type="checkbox" /> Auto-hide overlay</label>
+        <label>Default tab
+          <select id="default-tab"><option value="home">Home</option><option value="assistant">Assistant</option><option value="notes">Notes</option></select>
+        </label>
+        <label>Collapse delay (ms) <input id="collapse-delay" type="number" min="200" max="5000" step="100" /></label>
+        <div class="settings-actions">
+          <button type="button" id="test-connection">Test Connection</button>
+          <button type="submit">Save</button>
+        </div>
+        <div id="settings-status" role="status"></div>
+      </form>
+    </main>
+  </body>
+</html>

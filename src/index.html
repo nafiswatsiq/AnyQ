@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyQ</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="/main.js" defer></script>
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-help" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 15.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Zm1.8-4.1c-.8.5-.9.8-.9 1.5h-1.8c0-1.5.4-2.2 1.7-3 1-.6 1.5-1.1 1.5-2 0-1-.8-1.7-1.9-1.7-1.2 0-2 .8-2.1 2H8.5c.1-2.2 1.6-3.8 3.9-3.8 2.3 0 3.7 1.4 3.7 3.4 0 1.8-.9 2.7-2.3 3.6Z"/></symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 1 1 0 4H5a2 2 0 0 1-2-2Zm0 7a2 2 0 0 1 2-2h14a2 2 0 1 1 0 4H5a2 2 0 0 1-2-2Zm0 7a2 2 0 0 1 2-2h14a2 2 0 1 1 0 4H5a2 2 0 0 1-2-2Zm6-15h2v2H9V4Zm6 7h2v2h-2v-2Zm-4 7h2v2h-2v-2Z"/></symbol>
+      <symbol id="icon-clear" viewBox="0 0 24 24"><path fill="currentColor" d="M5 6h14v2H5V6Zm2 3h10l-1 12H8L7 9Zm3-6h4l1 3H9l1-3Zm0 8v7h2v-7h-2Zm4 0v7h2v-7h-2Z"/></symbol>
+      <symbol id="icon-copy" viewBox="0 0 24 24"><path fill="currentColor" d="M8 3h10a3 3 0 0 1 3 3v10h-3V6H8V3Zm-2 4h9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Zm0 3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1H6Z"/></symbol>
+      <symbol id="icon-stop" viewBox="0 0 24 24"><path fill="currentColor" d="M6 6h12v12H6z"/></symbol>
+      <symbol id="icon-toggle" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4h10a8 8 0 0 1 0 16H7A8 8 0 0 1 7 4Zm0 3a5 5 0 0 0 0 10h10a5 5 0 0 0 0-10H7Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/></symbol>
+      <symbol id="icon-send" viewBox="0 0 24 24"><path fill="currentColor" d="m3 4 18 7-18 9 3.2-7.1L14 12l-7.8-.9L3 4Z"/></symbol>
+      <symbol id="icon-home" viewBox="0 0 24 24"><path fill="currentColor" d="m3 10 9-8 9 8v10a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2V10Z"/></symbol>
+      <symbol id="icon-assistant" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4h9a5 5 0 0 1 5 5v3a5 5 0 0 1-5 5H9l-4 3v-5.2A5 5 0 0 1 1 12V9a5 5 0 0 1 5-5Zm2 5v2h2V9H8Zm5 0v2h2V9h-2Zm6 8 1 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8L19 17Z"/></symbol>
+      <symbol id="icon-notes" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3h10l4 4v14H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm2 7v2h8v-2H7Zm0 4v2h6v-2H7Z"/></symbol>
+      <symbol id="icon-screenshot" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3h14a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm1 4v10h12V7H6Zm2 2h8v6H8V9Z"/></symbol>
+      <symbol id="icon-voice" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a4 4 0 0 1 4 4v5a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Zm-7 8h2a5 5 0 0 0 10 0h2a7 7 0 0 1-6 6.9V21h3v2H8v-2h3v-3.1A7 7 0 0 1 5 11Z"/></symbol>
+    </svg>
+    <main id="overlay-root" class="collapsed">
+      <button id="pill" class="pill" type="button" aria-label="Expand AnyQ">
+        <img class="avatar-mini" src="assets/anyq-icon.gif" alt="" /><strong id="pill-time">--:--</strong>
+      </button>
+      <section id="panel" class="panel" aria-live="polite">
+        <header class="tabbar">
+          <nav class="tabs" aria-label="AnyQ sections">
+            <button class="tab active" data-tab="home" aria-label="Home"><svg class="tab-icon"><use href="#icon-home"></use></svg></button>
+            <button class="tab" data-tab="assistant" aria-label="Assistant"><svg class="tab-icon"><use href="#icon-assistant"></use></svg></button>
+            <button class="tab" data-tab="notes" aria-label="Notes"><svg class="tab-icon"><use href="#icon-notes"></use></svg></button>
+          </nav>
+          <span id="tab-title">Home</span>
+          <div class="tab-actions">
+            <span id="clickthrough-indicator" class="status-chip">Click-through OFF</span>
+            <button id="open-help" class="icon-button" type="button" aria-label="Help" title="Help"><svg class="button-icon"><use href="#icon-help"></use></svg></button>
+            <button id="open-settings" class="icon-button" type="button" aria-label="Settings" title="Settings"><svg class="button-icon"><use href="#icon-settings"></use></svg></button>
+          </div>
+        </header>
+        <div id="home-tab" class="tab-content"></div>
+        <div id="assistant-tab" class="tab-content" hidden>
+          <div class="assistant-toolbar">
+            <span id="status">Ready</span>
+            <div>
+              <button id="clear-output" type="button" aria-label="Clear output" title="Clear output"><svg class="button-icon"><use href="#icon-clear"></use></svg><span>Clear</span></button>
+              <button id="copy-output" type="button" aria-label="Copy output" title="Copy output"><svg class="button-icon"><use href="#icon-copy"></use></svg><span>Copy</span></button>
+              <button id="new-conversation" type="button">New</button>
+              <button id="cancel-ai" type="button" aria-label="Stop response" hidden><svg class="button-icon"><use href="#icon-stop"></use></svg><span>Stop</span></button>
+              <button id="conversation-toggle" class="status-chip" type="button" aria-pressed="false">Chat OFF</button>
+              <button id="toggle-clickthrough" type="button" aria-label="Toggle click-through" title="Toggle click-through"><svg class="button-icon"><use href="#icon-toggle"></use></svg><span>Toggle click-through</span></button>
+            </div>
+          </div>
+          <div id="output">Screen share protection is active.</div>
+          <form id="chat-form" class="chat-input-area">
+            <textarea id="chat-input" rows="1" placeholder="Tulis pertanyaan..."></textarea>
+            <button id="send-chat" type="submit" aria-label="Send message"><svg class="button-icon"><use href="#icon-send"></use></svg></button>
+          </form>
+        </div>
+        <div id="notes-tab" class="tab-content notes-tab" hidden>
+          <aside class="notes-sidebar">
+            <input id="note-search" type="search" placeholder="Search notes" aria-label="Search notes" />
+            <div class="notes-heading"><span>Notes</span><button id="new-note" type="button" aria-label="New note">＋</button></div>
+            <div id="notes-list"></div>
+          </aside>
+          <section class="note-editor">
+            <div class="editor-toolbar"><span id="note-save-status">Saved</span><button id="delete-note" type="button">Delete</button></div>
+            <textarea id="note-body" placeholder="Start writing..."></textarea>
+          </section>
+        </div>
+        <footer class="overlay-footer"><span id="event-log">Ready</span><span>Opacity <b id="opacity-value">90%</b></span></footer>
+      </section>
+    </main>
+  </body>
+</html>
